@@ -1,0 +1,3 @@
+# Objectives
+
+This project will be a very basic custom interpreter, written in TypeScript. It is not meant to be a serious project and serves as an intro to interpreters as I'm curious how they, and compilers work. Will probbably follow up with a compiler project depending. This interpreter will be pretty basic and plagued with issues (memory leaks, performance, limited features etc). Over time I plan to tighten up those areas as my knowledge and skills grow.
