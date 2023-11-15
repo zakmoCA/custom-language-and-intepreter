@@ -12,5 +12,8 @@
   "devDependencies": {
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "deno": "^0.1.1"
   }
 }

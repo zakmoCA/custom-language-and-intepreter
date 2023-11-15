@@ -1,5 +1,6 @@
 import * as fs from 'fs/promises'
 
+
 export enum TokenType {
   Number,
   Identifier,
@@ -91,14 +92,24 @@ export function tokenize (sourceCode: string): Token[] {
   return tokens
 }
 
-async function readTextFile(filePath: string): Promise<void> {
+async function readTextFile(filePath: string) {
   try {
-      const data = await fs.readFile(filePath, 'utf-8');
-      console.log(data);
+      const data = await fs.readFile(filePath, 'utf-8')
+      console.log(data)
+      for (const token of tokenize(data)) {
+        console.log(token)
+      }
   } catch (err) {
-      console.error('Error reading file:', err);
+      console.error('Error reading file:', err)
   }
 }
 
-readTextFile('./lexer.ts');
+readTextFile('./test.txt')
+
+
+
+// const source = await Deno.readTextFile("./test.txt")
+// for (const token of tokenize(source)) {
+//   console.log(token)
+// }
 
