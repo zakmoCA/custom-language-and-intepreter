@@ -1,6 +1,3 @@
-// Let x = 45
-// [ LetToken, IdentifierToken, EqualsToken, NumberToken ]
-
 export enum TokenType {
   Number,
   Identifier,
@@ -23,6 +20,8 @@ function token (value: string, type: TokenType): Token {
 
 export function tokenize (sourceCode: string): Token[] {
 
+  const operators = ['+', '-', '*', '/']
+
   const tokens = new Array<Token>()
   const src = sourceCode.split("")
 
@@ -32,6 +31,13 @@ export function tokenize (sourceCode: string): Token[] {
       tokens.push(token(src.shift()!, TokenType.OpenParen))
     } else if (src[0] == ")") {
       tokens.push(token(src.shift()!, TokenType.CloseParen))
+    } else if (operators.includes(src[0])) {
+      tokens.push(token(src.shift()!, TokenType.BinaryOperator))
+    } else if (src[0] == '=') {
+      tokens.push(token(src.shift()!, TokenType.Equals))
+    } else {
+
+      // handle multi-character tokens
     }
   }
 
