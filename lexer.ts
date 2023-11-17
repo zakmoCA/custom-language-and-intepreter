@@ -26,7 +26,7 @@ function token (value: string, type: TokenType): Token {
 }
 
 function isAlpha (src: string) {
-  return src.toUpperCase != src.toLowerCase
+  return src.toUpperCase() != src.toLowerCase()
 } 
 
 function isInt (str: string) {
