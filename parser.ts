@@ -8,6 +8,15 @@ export default class Parser {
     return this.tokens[0].type != TokenType.EOF
   }
 
+  private at () {
+    return this.tokens[0] as Token
+  }
+
+  private eat () {
+    const prev = this.tokens.shift() as Token
+    return prev
+  }
+
   public produceAST (sourceCode: string): Program {
     this.tokens = tokenize(sourceCode)
     const program: Program = {
@@ -31,7 +40,22 @@ export default class Parser {
   }
 
   private parseExpression (): Expression {
-    
+
+  }
+
+  private parsePrimaryExpression (): Expression {
+    const tk = this.at().type
+
+    switch (tk) {
+      case TokenType.Identifier: 
+        return { kind: "Identifier", symbol: this.eat().value } as Identifier
+      case TokenType.Number:
+        return { kind: "NumericLiteral", value: parseFloat(this.eat().value) } as NumericLiteral
+
+      default:
+        console.error("Unexpected token found during parsing!", this.at())
+        process.exit(1)
+    }
   }
 
 }
